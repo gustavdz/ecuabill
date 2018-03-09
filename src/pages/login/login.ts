@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import {MenuPage} from "../menu/menu";
+import {HttpErrorResponse} from '@angular/common/http';
 
 /**
  * Generated class for the LoginPage page.
@@ -35,10 +36,11 @@ export class LoginPage {
           localStorage.setItem('api_token', 'Bearer '+result['user_data']['api_token']);
           this.loading.dismiss();
           this.navCtrl.setRoot(MenuPage);
-      }, (err) => {
-          console.log(err);
+      }, (err: HttpErrorResponse) => {
+          console.log(err.message);
+          this.presentToast(err.message);
           this.loading.dismiss();
-          this.presentToast(err.error.error_message);
+
       });
   }
 

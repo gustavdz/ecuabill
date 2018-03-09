@@ -30,16 +30,17 @@ export class AdduserPage {
           console.log(result);
           this.loading.dismiss();
           this.presentToast(result);
+          this.navCtrl.pop();
       }, (err: HttpErrorResponse) => {
           console.log('ERROR!: ', err.message);
           console.log('status', err.status);
           this.loading.dismiss();
-          this.presentToast(err.error.error_message);
+          this.presentToast(err.message);
       });
   }
   showLoader(){
         this.loading = this.loadingCtrl.create({
-            content: 'Authenticating...'
+            content: 'Adding User...'
         });
 
         this.loading.present();
