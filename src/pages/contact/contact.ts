@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,App, ActionSheetController, AlertController } from 'ionic-angular';
+import { NavController,App,LoadingController, ToastController, ActionSheetController, AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { LoginPage } from '../login/login';
 
@@ -14,7 +14,7 @@ export class ContactPage {
   isLoggedIn: boolean = false;
 
 
-  constructor(public alertCtrl: AlertController, public app: App,public navCtrl: NavController, public restProvider: RestProvider, public actionSheetCtrl: ActionSheetController) {
+  constructor(public alertCtrl: AlertController, public app: App,public navCtrl: NavController, public restProvider: RestProvider,public loadingCtrl: LoadingController, private toastCtrl: ToastController, public actionSheetCtrl: ActionSheetController) {
       console.log(localStorage.getItem("api_token"));
       if(!localStorage.getItem("api_token")) {
           navCtrl.setRoot(LoginPage);
@@ -61,6 +61,7 @@ export class ContactPage {
               {
                   text: 'Cancel',
                   handler: data => {
+                      this.presentToast('Cancel clicked');
                       console.log('Cancel clicked');
                   }
               },
@@ -68,9 +69,11 @@ export class ContactPage {
                   text: 'Save',
                   handler: data => {
                       //console.log(data.name);
+                      this.showLoader();
                       this.restProvider.addClient(data).then(response => {
                           console.log(response);
                           this.getClients();
+                          this.loading.dismiss();
                       });
 
                   }
@@ -99,6 +102,27 @@ export class ContactPage {
               this.clients = data;
               console.log(this.clients);
           });
+  }
+  showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Adding Client...'
+        });
+
+        this.loading.present();
+  }
+  presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
+        });
+
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+
+        toast.present();
   }
 
   moreOptions(client) {

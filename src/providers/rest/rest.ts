@@ -75,7 +75,7 @@ export class RestProvider {
     addUser(data) {
         return new Promise((resolve, reject) => {
             this.http.post(this.apiUrl+'/register', JSON.stringify(data),{
-
+                headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8'),
             }).subscribe(res => {
                 resolve(res);
             }, (err: HttpErrorResponse) => {

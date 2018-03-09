@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import {HttpErrorResponse} from '@angular/common/http';
 
@@ -18,18 +18,45 @@ import {HttpErrorResponse} from '@angular/common/http';
 export class AdduserPage {
 
   user = { name:'', email:'', password:'', password_confirmation:''};
+  loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
 
   }
 
   saveUser() {
+      this.showLoader();
       this.restProvider.addUser(this.user).then((result) => {
           console.log(result);
+          this.loading.dismiss();
+          this.presentToast(result);
       }, (err: HttpErrorResponse) => {
           console.log('ERROR!: ', err.message);
           console.log('status', err.status);
+          this.loading.dismiss();
+          this.presentToast(err.error.error_message);
       });
+  }
+  showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Authenticating...'
+        });
+
+        this.loading.present();
+  }
+  presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
+        });
+
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+
+        toast.present();
   }
 
   ionViewDidLoad() {
