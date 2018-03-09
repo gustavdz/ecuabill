@@ -1,0 +1,31 @@
+<ion-menu [content]="content" type="overlay">
+  <ion-header>
+
+  </ion-header>
+
+  <ion-content>
+    <ion-card>
+      <img src='../../assets/imgs/rock.png'/>
+      <div class='card-title'>Ecuabill</div>
+      <div class='card-subtitle'>Facturero Electrónico Móvil</div>
+    </ion-card>
+
+    <ion-list no-lines>
+      <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon item-left large [name]="p.icon" [color]="isActive(p)"></ion-icon>
+        <h2>{{ p.title }}</h2>
+        <p>{{ p.description }}</p>
+      </button>
+      <ion-item-divider color="light">Account</ion-item-divider>
+
+      <ion-item ion-item menuClose (click)="logout()">
+        <ion-icon item-start name="log-out"></ion-icon>
+        <h2>Salir</h2>
+        <p>Cerrar Sesión</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- main navigation -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
