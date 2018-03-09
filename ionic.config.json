@@ -1,0 +1,8 @@
+{
+  "name": "ionicEcuaBill",
+  "app_id": "79d9958c",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
