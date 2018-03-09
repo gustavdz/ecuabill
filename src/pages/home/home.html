@@ -1,14 +1,49 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>EcuaBill</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showAddClient()">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-refresher (ionRefresh)="doClientRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="circles"
+            refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item-sliding *ngFor="let client of clients">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/avatar.png">
+        </ion-thumbnail>
+        <h2>{{client.name}} {{client.last_name}}</h2>
+        <p>{{client.email}}</p>
+      </ion-item>
+      <!--<ion-item-options side="right" (ionSwipe)="saveItem(item)">-->
+      <ion-item-options side="right">
+        <!--<button color="secondary" ion-button expandable (click)="saveItem(item)">-->
+        <button color="light" ion-button (click)="moreOptions(client)">
+          <ion-icon name="more"></ion-icon>More
+        </button>
+        <button color="secondary" ion-button (click)="editClient(client)">
+          <ion-icon name="create"></ion-icon>Editar
+        </button>
+        <button color="danger" ion-button (click)="deleteClient(client)">
+          <ion-icon name="trash"></ion-icon>Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>
