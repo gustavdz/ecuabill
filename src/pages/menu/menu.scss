@@ -1,5 +1,5 @@
 page-menu {
-  ion-card{
+  /*ion-card{
     position: relative;
     text-align: center;
     margin: 0px !important;
@@ -23,6 +23,132 @@ page-menu {
     width: 100%;
     color: #fff;
 
+  }
+  .avatar{
+    margin: auto;
+  }
+
+  .item-avatar  {
+    width:100% !important;
+    height : 100% !important;
+    max-width: 100px !important;  //any size
+    max-height: 100px !important; //any size
+  }
+
+  @import '../theme/animations';
+  @import '../theme/dark.theme';
+  @import '../theme/light.theme';*/
+  @import '../../theme/animations';
+  .card-title{
+    position: absolute;
+    //top: 36%;
+    //font-size: 2.0em;
+    width:100%;
+    font-weight: bold;
+    color: #fff;
+
+  }
+  .align-center {
+    text-align: center;
+  }
+
+  .highlight {
+    background-color: #f4f4f4;
+  }
+
+  .center {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .top-radius {
+    border-radius: 10% 10% 0 0;
+  }
+
+  .bottom-radius {
+    border-radius: 0 0 10% 10%;
+  }
+
+  .round {
+    border-radius: 50%;
+  }
+
+  .transparent-header {
+    // This is just to make the header transparent and button/icon with white color
+    .toolbar-content,
+    .back-button {
+      color: white;
+    }
+    .toolbar-background,
+    ion-navbar,
+    ion-header {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+    .header-md::after,
+    .toolbar-background-ios {
+      background-image: none;
+      border-bottom: 0;
+    }
+    .header-ios .toolbar-background-ios,
+    .footer-ios .toolbar-background-ios {
+      border: 0;
+    }
+    // ---
+  }
+
+  .icon-badge {
+    top: 0px;
+    right: 0px;
+    background: #FF5D5D;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    padding: 5px 8px;
+    border-radius: 15px;
+  }
+
+  // Sidemenu with avatar
+  #menu-avatar {
+    .user-avatar {
+      padding: .5em;
+    }
+    h3,
+    .label {
+      color: white;
+      font-weight: bold;
+    }
+    .item {
+      background: transparent;
+    }
+    h2,
+    .label {
+      color: white;
+      font-weight: bold;
+    }
+    .item {
+      background: transparent;
+    }
+    p,
+    .label {
+      color: white;
+      font-weight: normal;
+    }
+    .item {
+      background: transparent;
+    }
+    ion-content {
+      background: linear-gradient(48deg, rgba(157, 72, 173, 0.8) 0%, rgba(157, 72, 173, 0.86) 28%, rgba(0, 168, 168, 0.98) 93%, rgba(0, 168, 168, 1) 100%);
+    }
+    .menu-inner {
+      background: rgba(255, 255, 255, .3);
+    }
   }
 }
 

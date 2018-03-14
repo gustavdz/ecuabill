@@ -9,6 +9,7 @@ import { LoginPage } from '../login/login';
     templateUrl: 'contact.html'
 })
 export class ContactPage {
+
   clients: any;
   loading: any;
   isLoggedIn: boolean = false;

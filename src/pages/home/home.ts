@@ -62,6 +62,7 @@ export class HomePage {
                 {
                     text: 'Cancel',
                     handler: data => {
+                        this.presentToast('Cancel clicked');
                         console.log('Cancel clicked');
                     }
                 },
@@ -69,9 +70,11 @@ export class HomePage {
                     text: 'Save',
                     handler: data => {
                         //console.log(data.name);
+                        this.showLoader();
                         this.restProvider.addClient(data).then(response => {
                             console.log(response);
                             this.getClients();
+                            this.loading.dismiss();
                         });
 
                     }

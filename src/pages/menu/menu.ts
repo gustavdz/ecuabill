@@ -22,6 +22,8 @@ export interface PageInterface {
     index?: number;
     icon: string;
     description?: string;
+    color?: any;
+
 }
 
 @IonicPage()
@@ -34,21 +36,24 @@ export class MenuPage {
     // Basic root for our content view
     rootPage = 'TabsPage';
     loading: any;
+    user = { name:'', email:''};
     // Reference to the app's root nav
     @ViewChild(Nav) nav: Nav;
 
     pages: PageInterface[] = [
-        { title: 'Home', pageName: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
-        { title: 'Products', pageName: 'TabsPage', tabComponent: 'ProductsPage', index: 1, icon: 'shirt', description: 'Lista de productos o servicios' },
-        { title: 'Clients', pageName: 'TabsPage', tabComponent: 'ContactPage', index: 2, icon: 'book', description: 'Solicita información'},
-        { title: 'About', pageName: 'AboutPage', tabComponent: 'AboutPage', icon: 'information-circle', description: 'Acerda de Ecuabill'},
+        { title: 'Home', pageName: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home-outline', color:'light' },
+        { title: 'Products', pageName: 'TabsPage', tabComponent: 'ProductsPage', index: 1, icon: 'shirt-outline', description: 'Lista de productos o servicios', color:'light' },
+        { title: 'Clients', pageName: 'TabsPage', tabComponent: 'ContactPage', index: 2, icon: 'book-outline', description: 'Solicita información', color:'light'},
+        { title: 'About', pageName: 'AboutPage', tabComponent: 'AboutPage', icon: 'information-circle-outline', description: 'Acerca de Ecuabill', color:'light'},
         //{ title: 'Credits', pageName: 'CreditsPage', icon: 'shuffle', description:'Desarrollada por Gustavo Decker' },
     ];
 
     constructor(public app: App,public navCtrl: NavController,public restProvider: RestProvider,public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+
+        this.getAuthUser();
     }
 
-    logout() {
+    logout(){
         this.showLoader();
         this.restProvider.logout().then((result) => {
             this.loading.dismiss();
@@ -58,6 +63,13 @@ export class MenuPage {
             this.loading.dismiss();
             this.presentToast(err);
         });
+    }
+    getAuthUser() {
+        this.restProvider.getAuthUser()
+            .then(data => {
+                this.user = data['data'];
+                console.log(this.user);
+            });
     }
     showLoader(){
         this.loading = this.loadingCtrl.create({

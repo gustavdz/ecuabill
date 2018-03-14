@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RestProvider {
 
-    apiUrl = 'http://192.168.137.16:8000/api';
+    apiUrl = 'http://localhost:8000/api';
 
     constructor(public http: HttpClient) {
         console.log('Hello RestProvider Provider');
@@ -94,6 +94,19 @@ export class RestProvider {
                 //params: new HttpParams().set('',''),
             }).subscribe(res => {
                 resolve(res);
+            }, (err: HttpErrorResponse) => {
+                console.log('ERROR!: ', err.message);
+                console.log('status', err.status);
+                reject(err);
+            });
+        });
+    }
+    getAuthUser() {
+        return new Promise((resolve,reject)=> {
+            this.http.get(this.apiUrl + '/auth/user', {
+                headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8').set('Authorization', localStorage.getItem("api_token")),
+            }).subscribe(data => {
+                resolve(data);
             }, (err: HttpErrorResponse) => {
                 console.log('ERROR!: ', err.message);
                 console.log('status', err.status);
