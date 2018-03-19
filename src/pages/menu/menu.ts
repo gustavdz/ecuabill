@@ -7,7 +7,7 @@ import { LoginPage } from "../login/login";
 import { RestProvider } from "../../providers/rest/rest";
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav,LoadingController, ToastController,App } from 'ionic-angular';
-
+import { ProfilePage } from "../profile/profile";
 
 /**
  * Generated class for the MenuPage page.
@@ -45,6 +45,7 @@ export class MenuPage {
         { title: 'Products', pageName: 'TabsPage', tabComponent: 'ProductsPage', index: 1, icon: 'shirt-outline', description: 'Lista de productos o servicios', color:'light' },
         { title: 'Clients', pageName: 'TabsPage', tabComponent: 'ContactPage', index: 2, icon: 'book-outline', description: 'Solicita información', color:'light'},
         { title: 'About', pageName: 'AboutPage', tabComponent: 'AboutPage', icon: 'information-circle-outline', description: 'Acerca de Ecuabill', color:'light'},
+        //{ title: 'Profile', pageName: 'ProfilePage', icon: 'information-circle-outline', description: 'Perfil', color:'light'},
         //{ title: 'Credits', pageName: 'CreditsPage', icon: 'shuffle', description:'Desarrollada por Gustavo Decker' },
     ];
 
@@ -109,6 +110,16 @@ export class MenuPage {
             // In this case: moving to or from SpecialPage
             this.nav.setRoot(page.pageName, params);
         }
+    }
+
+    goToPage(pag){
+        let params = {};
+        // The active child nav is our Tabs Navigation
+
+            // Tabs are not active, so reset the root page
+            // In this case: moving to or from SpecialPage
+            this.nav.setRoot(pag, params);
+
     }
 
     isActive(page: PageInterface) {

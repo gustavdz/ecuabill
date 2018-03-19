@@ -18,6 +18,7 @@ import {ProductsPage} from "../pages/products/products";
 
 import { RestProvider } from '../providers/rest/rest';
 
+
 Pro.init('79d9958c', {
     appVersion: '0.0.1'
 })
@@ -52,6 +53,7 @@ export class MyErrorHandler implements ErrorHandler {
     MenuPage,
     PopoverAboutPage,
     ProductsPage,
+
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ export class MyErrorHandler implements ErrorHandler {
     MenuPage,
     PopoverAboutPage,
     ProductsPage,
+
   ],
   providers: [
     StatusBar,

@@ -40,15 +40,16 @@
           <span class="icon-badge">4</span>-->
         </ion-col>
         <ion-col col-6>
-          <img class="user-avatar round" src="../../assets/imgs/avatar.png" onerror="this.src='../../assets/imgs/avatar.png'"
-          />
+          <img class="user-avatar round" src="../../assets/imgs/avatar.png" onerror="this.src='../../assets/imgs/avatar.png'"/>
         </ion-col>
         <ion-col col-3>
          <!-- <img src="../../assets/imgs/icon-calendar.svg" />-->
         </ion-col>
       </ion-row>
       <ion-row style="justify-content: center;">
-        <h3 class="align-center">{{user.name}}</h3>
+        <h3 class="align-center">{{user.name}}
+          <ion-icon name="settings" isActive="false" menuClose (click)="goToPage('ProfilePage')"></ion-icon>
+        </h3>
       </ion-row>
       <ion-row style="justify-content: center;">
         <p class="align-center">{{user.email}}</p>
