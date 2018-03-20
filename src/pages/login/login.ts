@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { RestProvider } from '../../providers/rest/rest';
 import {MenuPage} from "../menu/menu";
 import {HttpErrorResponse} from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the LoginPage page.
@@ -17,10 +18,25 @@ import {HttpErrorResponse} from '@angular/common/http';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+    backgrounds = [
+        './assets/imgs/background-login.jpg',
+    ];
+    public loginForm: any;
     loading: any;
     user = { email:'', password:''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public restProvider: RestProvider,
+              public loadingCtrl: LoadingController,
+              private toastCtrl: ToastController,
+              public formBuilder: FormBuilder) {
+
+      this.loginForm = formBuilder.group({
+          email: ['', Validators.required],
+          password: ['', Validators.compose([Validators.minLength(6),
+              Validators.required])]
+      });
 
   }
 

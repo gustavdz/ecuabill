@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage,NavController,App, LoadingController, ToastController, ActionSheetController, AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
-import { LoginPage } from '../login/login';
+
 
 /**
  * Generated class for the ProfilePage page.
