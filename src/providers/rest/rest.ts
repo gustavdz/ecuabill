@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 export class RestProvider {
 
     apiUrl = 'http://192.168.137.16:8000/api';
+    //apiUrl = 'http://localhost:8000/api';
 
     constructor(public http: HttpClient) {
         console.log('Hello RestProvider Provider');

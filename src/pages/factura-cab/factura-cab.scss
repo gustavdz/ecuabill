@@ -1,8 +1,9 @@
-page-contact {
+page-factura-cab {
   .page-background{
     //background-color: rgb(89, 138, 223);
     background: linear-gradient(45deg, #5e6d8c, #384662);
   }
+
   p{
     margin:0;
   }
@@ -48,10 +49,10 @@ page-contact {
   .body {
     .currencies {
       .currency {
-        background: rgba(0, 0, 0, 0.20);//linear-gradient(45deg, #5e6d8c, #384662);
+        background: rgba(0, 0, 0, 0.20) 25%;//linear-gradient(45deg, #5e6d8c, #384662);
+        padding: 10px;
         border-radius: 10px;
         margin: 10px auto;
-        color: #ffffff;
 
         .image {
           text-align: left;

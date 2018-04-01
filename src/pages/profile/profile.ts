@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage,NavController,App, LoadingController, ToastController, ActionSheetController, AlertController } from 'ionic-angular';
+import { IonicPage,NavController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 
 
@@ -16,8 +16,38 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
+  user = {
+      name: '',
+      profileImage: './assets/imgs/avatar.png',
+      coverImage: './assets/imgs/background-login.jpg',
+      occupation: 'Designer',
+      location: 'Seattle, WA',
+      description: 'Passionate Designer. Recently focusing on developing mobile hybrid apps and web development.',
+      address: '27 King\'s College Cir, Toronto, ON M5S, Canada',
+      phone: '555 555 555',
+      email: '',
+      whatsapp: '555 555 555',
+  };
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+              public restProvider: RestProvider) {
+      this.getAuthUser();
+  }
+
+  getAuthUser() {
+    this.restProvider.getAuthUser()
+        .then(data => {
+            this.user = data['data'];
+            this.user.whatsapp='555 555 555';
+            this.user.profileImage='555 555 555';
+            this.user.coverImage='555 555 555';
+            this.user.occupation='555 555 555';
+            this.user.location='555 555 555';
+            this.user.description='555 555 555';
+            this.user.address='555 555 555';
+            this.user.phone='555 555 555';
+            console.log(this.user);
+        });
   }
 
   ionViewDidLoad() {

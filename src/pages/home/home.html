@@ -1,8 +1,8 @@
 <ion-header>
-  <ion-navbar>
-      <button ion-button icon-only menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
+  <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>EcuaBill</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="showAddClient()">
@@ -12,7 +12,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding class="page-background transparent-header">
 
   <ion-refresher (ionRefresh)="doClientRefresh($event)">
     <ion-refresher-content
@@ -22,29 +22,17 @@
             refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-list>
-    <ion-item-sliding *ngFor="let client of clients">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="./assets/imgs/avatar.png">
-        </ion-thumbnail>
-        <h2>{{client.name}} {{client.last_name}}</h2>
-        <p>{{client.email}}</p>
-      </ion-item>
-      <!--<ion-item-options side="right" (ionSwipe)="saveItem(item)">-->
-      <ion-item-options side="right">
-        <!--<button color="secondary" ion-button expandable (click)="saveItem(item)">-->
-        <button color="light" ion-button (click)="moreOptions(client)">
-          <ion-icon name="more"></ion-icon>More
-        </button>
-        <button color="secondary" ion-button (click)="editClient(client)">
-          <ion-icon name="create"></ion-icon>Editar
-        </button>
-        <button color="danger" ion-button (click)="deleteClient(client)">
-          <ion-icon name="trash"></ion-icon>Eliminar
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-
+  <div class="body">
+    <div class="currencies">
+      <div *ngFor="let client of clients">
+        <ion-item class="currency" no-lines no-margin (click)="moreOptions(client)">
+          <ion-thumbnail class="image" item-start>
+            <img src="./assets/imgs/avatar.png">
+          </ion-thumbnail>
+          <h2 class="name">{{client.name}} {{client.last_name}}</h2>
+          <p class="rank">{{client.email}}</p>
+        </ion-item>
+      </div>
+    </div>
+  </div>
 </ion-content>

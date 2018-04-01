@@ -130,23 +130,29 @@ export class HomePage {
 
     moreOptions(client) {
         let actionSheet = this.actionSheetCtrl.create({
-            title: 'Modify your Client',
+            title: 'Opciones',
             buttons: [
                 {
-                    text: 'Destructive',
+                    text: 'Eliminar',
                     role: 'destructive',
                     handler: () => {
                         console.log('Destructive clicked ' + JSON.stringify(client));
                     }
                 },
                 {
-                    text: 'Archive',
+                    text: 'Editar',
+                    handler: () => {
+                        console.log('Editar clicked' + JSON.stringify(client));
+                    }
+                },
+                {
+                    text: 'Facturar',
                     handler: () => {
                         console.log('Archive clicked' + JSON.stringify(client));
                     }
                 },
                 {
-                    text: 'Cancel',
+                    text: 'Cancelar',
                     role: 'cancel',
                     handler: () => {
                         console.log('Cancel clicked' + JSON.stringify(client));

@@ -1,21 +1,33 @@
 import { Component } from '@angular/core';
-import { NavController,App,LoadingController, ToastController, ActionSheetController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, LoadingController, ToastController, ActionSheetController, AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { LoginPage } from '../login/login';
 
+/**
+ * Generated class for the FacturaCabPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
+@IonicPage()
 @Component({
-    selector: 'page-contact',
-    templateUrl: 'contact.html'
+  selector: 'page-factura-cab',
+  templateUrl: 'factura-cab.html',
 })
-export class ContactPage {
-
+export class FacturaCabPage {
   clients: any;
   loading: any;
   isLoggedIn: boolean = false;
 
-
-  constructor(public alertCtrl: AlertController, public app: App,public navCtrl: NavController, public restProvider: RestProvider,public loadingCtrl: LoadingController, private toastCtrl: ToastController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public alertCtrl: AlertController,
+              public app: App,
+              public navCtrl: NavController,
+              public restProvider: RestProvider,
+              public loadingCtrl: LoadingController,
+              private toastCtrl: ToastController,
+              public actionSheetCtrl: ActionSheetController) {
       console.log(localStorage.getItem("api_token"));
       if(!localStorage.getItem("api_token")) {
           navCtrl.setRoot(LoginPage);
@@ -24,7 +36,6 @@ export class ContactPage {
           this.isLoggedIn = true;
           this.getClients();
       }
-
   }
 
   showAddClient() {
@@ -104,65 +115,61 @@ export class ContactPage {
               console.log(this.clients);
           });
   }
+
   showLoader(){
-        this.loading = this.loadingCtrl.create({
-            content: 'Adding Client...'
-        });
+      this.loading = this.loadingCtrl.create({
+          content: 'Authenticating...'
+      });
 
-        this.loading.present();
+      this.loading.present();
   }
+
   presentToast(msg) {
-        let toast = this.toastCtrl.create({
-            message: msg,
-            duration: 3000,
-            position: 'bottom',
-            dismissOnPageChange: true
-        });
+      let toast = this.toastCtrl.create({
+          message: msg,
+          duration: 3000,
+          position: 'bottom',
+          dismissOnPageChange: true
+      });
 
-        toast.onDidDismiss(() => {
-            console.log('Dismissed toast');
-        });
+      toast.onDidDismiss(() => {
+          console.log('Dismissed toast');
+      });
 
-        toast.present();
+      toast.present();
   }
 
   moreOptions(client) {
-    let actionSheet = this.actionSheetCtrl.create({
-    title: 'Opciones',
-    buttons: [
-    {
-      text: 'Eliminar',
-      role: 'destructive',
-      handler: () => {
-          console.log('Destructive clicked ' + JSON.stringify(client));
-      }
-    },
-    {
-      text: 'Editar',
-      handler: () => {
-          console.log('Editar clicked' + JSON.stringify(client));
-      }
-    },
-    {
-        text: 'Facturar',
-        handler: () => {
-            console.log('Archive clicked' + JSON.stringify(client));
-        }
-    },
-    {
-      text: 'Cancelar',
-      role: 'cancel',
-      handler: () => {
-          console.log('Cancel clicked' + JSON.stringify(client));
-      }
-    }
-    ]
-    });
-    actionSheet.present();
+      let actionSheet = this.actionSheetCtrl.create({
+          title: 'Modify your Client',
+          buttons: [
+              {
+                  text: 'Destructive',
+                  role: 'destructive',
+                  handler: () => {
+                      console.log('Destructive clicked ' + JSON.stringify(client));
+                  }
+              },
+              {
+                  text: 'Archive',
+                  handler: () => {
+                      console.log('Archive clicked' + JSON.stringify(client));
+                  }
+              },
+              {
+                  text: 'Cancel',
+                  role: 'cancel',
+                  handler: () => {
+                      console.log('Cancel clicked' + JSON.stringify(client));
+                  }
+              }
+          ]
+      });
+      actionSheet.present();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactPage');
+    console.log('ionViewDidLoad FacturaCabPage');
   }
 
 }

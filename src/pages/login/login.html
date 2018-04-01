@@ -33,29 +33,51 @@
 
   <button ion-button type="button" (click)="goTo('AdduserPage')" block>Register a User</button>
 </ion-content>
---><ion-header no-border>
-  <ion-navbar transparent>
-  </ion-navbar>
-</ion-header>
-<ion-content>
-  <ion-slides pager="false" autoplay="2000" loop="true" speed="1500" effect="fade">
-    <ion-slide class="slide-background swiper-no-swiping" *ngFor="let background of backgrounds" [ngStyle]="{'background-image': 'url(' + background +')'}">
-    </ion-slide>
-  </ion-slides>
-  <div class="login-container">
-    <img class="logo" src="./assets/imgs/EcuaBill_logo.png" />
+--><ion-content padding class="transparent-header" [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  <ion-header>
+    <ion-navbar color="primary">
+    </ion-navbar>
+  </ion-header>
+  <div padding>
+    <ion-row>
+      <ion-col>
+        <img class="logo" src="assets/imgs/EcuaBill_logo.png" />
+      </ion-col>
+    </ion-row>
     <form (ngSubmit)="login()">
-      <strong>Login:</strong>
-      <ion-item>
-        <ion-input type="email" [(ngModel)]="user.email" name="email" placeholder="Email" required></ion-input>
-        <span class="validation text-danger"></span>
-      </ion-item>
-      <ion-item>
-        <ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" ng-minlength="6" required></ion-input>
-        <span class="validation text-danger"></span>
-      </ion-item>
-      <button ion-button margin color="danger">LOGIN</button>
-      <p (click)="openResetPassword()"><strong>Forgot your password?</strong></p>
+    <ion-row>
+      <ion-col>
+        <ion-list inset class="no-border">
+          <ion-item>
+            <ion-label>Username</ion-label>
+            <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input> <span class="validation text-danger"></span>
+          </ion-item>
+          <ion-item>
+            <ion-label>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password" name="password" ng-minlength="6" required></ion-input> <span class="validation text-danger"></span>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button class="login-button" type="submit">Login</button>
+      </ion-col>
+    </ion-row>
     </form>
+    <ion-row>
+      <ion-col>
+        <div>
+          &nbsp;
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div (click)="goTo('AdduserPage')">
+          <span>Or create a new account.</span>
+        </div>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

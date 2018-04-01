@@ -17,6 +17,7 @@ import {ProductsPage} from "../pages/products/products";
 
 
 import { RestProvider } from '../providers/rest/rest';
+import {FacturaCabPage} from "../pages/factura-cab/factura-cab";
 
 
 Pro.init('79d9958c', {
@@ -53,6 +54,7 @@ export class MyErrorHandler implements ErrorHandler {
     MenuPage,
     PopoverAboutPage,
     ProductsPage,
+    FacturaCabPage,
 
   ],
   imports: [
@@ -69,6 +71,7 @@ export class MyErrorHandler implements ErrorHandler {
     MenuPage,
     PopoverAboutPage,
     ProductsPage,
+    FacturaCabPage,
 
   ],
   providers: [

@@ -21,6 +21,7 @@ export class LoginPage {
     backgrounds = [
         './assets/imgs/background-login.jpg',
     ];
+    public backgroundImage = 'assets/imgs/background-login.jpg';
     public loginForm: any;
     loading: any;
     user = { email:'', password:''};

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import {HttpErrorResponse} from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the AdduserPage page.
@@ -17,10 +18,25 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class AdduserPage {
 
-  user = { name:'', email:'', password:'', password_confirmation:''};
-  loading: any;
+    backgrounds = [
+    './assets/imgs/background-login.jpg',
+    ];
+    public backgroundImage = 'assets/imgs/background-login.jpg';
+    user = { name:'', email:'', password:'', password_confirmation:''};
+    loading: any;
+    public loginForm: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public restProvider: RestProvider,
+              public loadingCtrl: LoadingController,
+              private toastCtrl: ToastController,
+              public formBuilder: FormBuilder) {
+      this.loginForm = formBuilder.group({
+          email: ['', Validators.required],
+          password: ['', Validators.compose([Validators.minLength(6),
+              Validators.required])]
+      });
 
   }
 

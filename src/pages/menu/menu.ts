@@ -7,7 +7,7 @@ import { LoginPage } from "../login/login";
 import { RestProvider } from "../../providers/rest/rest";
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav,LoadingController, ToastController,App } from 'ionic-angular';
-import { ProfilePage } from "../profile/profile";
+
 
 /**
  * Generated class for the MenuPage page.
@@ -42,11 +42,11 @@ export class MenuPage {
 
     pages: PageInterface[] = [
         { title: 'Home', pageName: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home-outline', color:'light' },
-        { title: 'Products', pageName: 'TabsPage', tabComponent: 'ProductsPage', index: 1, icon: 'shirt-outline', description: 'Lista de productos o servicios', color:'light' },
-        { title: 'Clients', pageName: 'TabsPage', tabComponent: 'ContactPage', index: 2, icon: 'book-outline', description: 'Solicita información', color:'light'},
+        { title: 'Clientes', pageName: 'TabsPage', tabComponent: 'ContactPage', index: 1, icon: 'people-outline', description: 'Solicita información', color:'light'},
+        { title: 'Productos', pageName: 'TabsPage', tabComponent: 'ProductsPage', index: 2, icon: 'pricetags-outline', description: 'Lista de productos o servicios', color:'light' },
+        { title: 'Facturas', pageName: 'TabsPage', tabComponent: 'FacturaCabPage', index: 3, icon: 'calculator-outline', description: 'Lista de Facturas', color:'light' },
         { title: 'About', pageName: 'AboutPage', tabComponent: 'AboutPage', icon: 'information-circle-outline', description: 'Acerca de Ecuabill', color:'light'},
-        //{ title: 'Profile', pageName: 'ProfilePage', icon: 'information-circle-outline', description: 'Perfil', color:'light'},
-        //{ title: 'Credits', pageName: 'CreditsPage', icon: 'shuffle', description:'Desarrollada por Gustavo Decker' },
+
     ];
 
     constructor(public app: App,public navCtrl: NavController,public restProvider: RestProvider,public loadingCtrl: LoadingController, private toastCtrl: ToastController) {

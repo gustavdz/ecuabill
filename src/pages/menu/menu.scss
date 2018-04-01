@@ -1,40 +1,5 @@
 page-menu {
-  /*ion-card{
-    position: relative;
-    text-align: center;
-    margin: 0px !important;
-    width: 100% !important;
-  }
-
-  .card-title{
-    position: absolute;
-    top: 36%;
-    font-size: 2.0em;
-    width:100%;
-    font-weight: bold;
-    color: #fff;
-
-  }
-
-  .card-subtitle{
-    font-size: 1.0em;
-    position: absolute;
-    top: 60%;
-    width: 100%;
-    color: #fff;
-
-  }
-  .avatar{
-    margin: auto;
-  }
-
-  .item-avatar  {
-    width:100% !important;
-    height : 100% !important;
-    max-width: 100px !important;  //any size
-    max-height: 100px !important; //any size
-  }
-
+/*
   @import '../theme/animations';
   @import '../theme/dark.theme';
   @import '../theme/light.theme';*/
@@ -144,7 +109,8 @@ page-menu {
       background: transparent;
     }
     ion-content {
-      background: linear-gradient(48deg, rgba(157, 72, 173, 0.8) 0%, rgba(157, 72, 173, 0.86) 28%, rgba(0, 168, 168, 0.98) 93%, rgba(0, 168, 168, 1) 100%);
+      /*background: linear-gradient(48deg, rgba(157, 72, 173, 0.8) 0%, rgba(157, 72, 173, 0.86) 28%, rgba(0, 168, 168, 0.98) 93%, rgba(0, 168, 168, 1) 100%);*/
+      background: linear-gradient(48deg, rgba(82, 197, 250, 0.90) 25%, rgba(29, 118, 246, 1) 100%);
     }
     .menu-inner {
       background: rgba(255, 255, 255, .3);

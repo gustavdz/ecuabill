@@ -108,14 +108,14 @@ export class ProductsPage {
             title: 'Modify your Product',
             buttons: [
                 {
-                    text: 'Destructive',
+                    text: 'Eliminar',
                     role: 'destructive',
                     handler: () => {
                         console.log('Destructive clicked ' + JSON.stringify(product));
                     }
                 },
                 {
-                    text: 'Archive',
+                    text: 'Editar',
                     handler: () => {
                         console.log('Archive clicked' + JSON.stringify(product));
                     }

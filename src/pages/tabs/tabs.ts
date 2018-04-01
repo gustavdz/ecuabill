@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ContactPage} from "../contact/contact";
 import {HomePage} from "../home/home";
 import {ProductsPage} from "../products/products";
+import {FacturaCabPage} from "../factura-cab/factura-cab";
 
 /**
  * Generated class for the TabsPage page.
@@ -19,6 +20,7 @@ import {ProductsPage} from "../products/products";
 export class TabsPage {
 
   productsPage: any = ProductsPage;
+  facturaCabPage: any = FacturaCabPage;
   contactPage:any = ContactPage;
   homePage:any = HomePage;
   myIndex: number;
